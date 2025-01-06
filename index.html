@@ -12,10 +12,10 @@
             padding: 0;
             background: url('img/9112.jpg') no-repeat center center fixed;
             background-size: cover;
-            color: #FFD700; /* Sarı renk */
+            color: #FFD700;
             position: relative;
-            min-height: 100vh; /* Sayfa yüksekliği kadar */
-            overflow: hidden; /* Sayfa dışına taşma engellendi */
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
         body::before {
@@ -25,19 +25,19 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5); /* Siyah, %50 opaklık */
+            background-color: rgba(0, 0, 0, 0.5);
             opacity: 60;
-            z-index: -1; /* Arka planda tutmak için */
+            z-index: -1;
         }
 
-        /* Yağmur damlalarının stili */
+        /* Yağmur Damlaları */
         .rain {
             position: absolute;
             top: -10px;
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none; /* Fare etkileşimi engellendi */
+            pointer-events: none;
             z-index: 1;
         }
 
@@ -45,40 +45,27 @@
             position: absolute;
             width: 2px;
             height: 10px;
-            background: rgba(255, 255, 255, 0.7); /* Beyaz, hafif şeffaf damlalar */
+            background: rgba(255, 255, 255, 0.7);
             animation: fall linear infinite;
         }
 
-        /* Yağmur damlalarının animasyonu */
         @keyframes fall {
-            0% {
-                top: -10px;
-            }
-            100% {
-                top: 100%;
-            }
-        }
-
-        .raindrop:nth-child(odd) {
-            animation-duration: 50s;  /* Daha yavaş hız için süreyi artırdık */
-        }
-
-        .raindrop:nth-child(even) {
-            animation-duration: 50s;  /* Daha yavaş hız için süreyi artırdık */
+            0% { top: -10px; }
+            100% { top: 100%; }
         }
 
         /* Header */
         header {
             display: flex;
-            justify-content: center; /* Logo yatayda ortalanır */
-            align-items: center; /* Logo dikeyde ortalanır */
-            height: 150px; /* Header yüksekliği ayarlandı */
-            background-color: #000; /* Siyah arka plan */
+            justify-content: center;
+            align-items: center;
+            height: 150px;
+            background-color: #000;
         }
 
         header .logo img {
-            max-height: 150px; /* Logo yüksekliği header'a göre ayarlandı */
-            width: auto; /* Oranları korur */
+            max-height: 150px;
+            width: auto;
         }
 
         /* Banner */
@@ -88,7 +75,7 @@
             text-align: center;
             padding: 100px 20px;
             position: relative;
-            z-index: 1; /* Banner içeriği üstte kalır */
+            z-index: 1;
         }
 
         .banner h2 {
@@ -123,19 +110,23 @@
         /* Blog Kategorileri */
         .categories {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
+            flex-wrap: wrap;
             padding: 40px;
             position: relative;
-            z-index: 1; /* İçerik üstte kalır */
+            z-index: 1;
+            gap: 20px; /* Kartlar arasındaki boşluğu ayarladık */
         }
 
         .category {
-            background-color: rgba(0, 0, 0, 0.7); /* Saydam siyah arka plan */
+            background-color: rgba(0, 0, 0, 0.7);
             padding: 20px;
-            width: 45%;
+            width: calc(50% - 10px); /* Kartların genişliğini eşitledik ve küçük boşluk bıraktık */
             text-align: center;
             border-radius: 10px;
             color: white;
+            margin-bottom: 20px;
+            box-sizing: border-box; /* İçerikleri düzgün yerleştirir */
         }
 
         .category h3 {
@@ -161,15 +152,15 @@
 
         /* Footer */
         footer {
-            position: fixed; /* Sayfanın alt kısmına sabitlenir */
+            position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
-            background-color: #000; /* Siyah arka plan */
-            color: #FFD700; /* Sarı yazı rengi */
+            background-color: #000;
+            color: #FFD700;
             padding: 10px 20px;
             text-align: center;
-            z-index: 1000; /* Üstte görünmesi için */
+            z-index: 1000;
         }
 
         footer .social-media a,
@@ -182,16 +173,50 @@
 
         footer .social-media a:hover,
         footer .footer-links a:hover {
-            text-decoration: underline; /* Üzerine gelince altı çizili yap */
+            text-decoration: underline;
         }
 
         /* Banner Metin Düzenlemeleri */
         .banner p {
-            font-size: 1.5em; /* Yazı boyutunu büyüttük */
-            color: #FFD700; /* Sarı renk */
-            font-weight: bold; /* Kalın yazı */
-            margin-bottom: 20px; /* Buton ile araya mesafe ekledik */
-            margin-top: -50px; /* Yazıyı yukarıya çekmek için */
+            font-size: 1.5em;
+            color: #FFD700;
+            font-weight: bold;
+            margin-bottom: 20px;
+            margin-top: -50px;
+        }
+
+        /* Mobil Uyumluluk için Media Query */
+        @media screen and (max-width: 768px) {
+            .banner {
+                padding: 60px 20px;
+            }
+
+            .categories {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px; /* Mobilde kartlar arasındaki boşluğu ayarladık */
+            }
+
+            .category {
+                width: 90%; /* Mobilde kartları daha geniş yapıyoruz */
+            }
+
+            header .logo img {
+                max-height: 120px;
+            }
+
+            .banner h2 {
+                font-size: 2em;
+            }
+
+            .cta-button1, .cta-button {
+                font-size: 1em;
+                padding: 8px 16px;
+            }
+
+            footer .footer-links a {
+                font-size: 1em;
+            }
         }
     </style>
 </head>
@@ -209,41 +234,39 @@
     <!-- Banner Section -->
     <section class="banner">
         <h2></h2>
-        <p>Site satışlarımız için iletişim kurunuz.</p> <!-- Metin buraya eklendi -->
+        <p>Site satışlarımız için iletişim kurunuz.</p>
         <a href="tercihler.html" class="cta-button1">Keşfet</a>
     </section>
 
     <!-- Kartlar ve Satın Al Butonu -->
     <section class="categories">
-        <div class="category" style="margin-right: 10%;">
+        <div class="category">
             <h3>İşletmeler İçin</h3>
             <p><strong>Satış Stratejileri:</strong></p>
             <ul>
-                <li>Hedef kitlenizi doğru belirleyin ve onların ihtiyaçlarını ön planda tutun.</li>
-                <li>İçeriğinizin güçlü bir SEO stratejisiyle optimize edilmesi gerekir.</li>
-                <li>Sosyal medya kullanarak daha geniş bir kitleye ulaşın.</li>
+                <li>Hedef kitlenizi doğru belirleyin.</li>
+                <li>İçeriğinizin SEO uyumlu olması gerekir.</li>
+                <li>Sosyal medya üzerinden reklam yapın.</li>
             </ul>
             <p><strong>Avantajlar:</strong></p>
             <ul>
-                <li>İşletmeniz için kişiselleştirilmiş blog sayfaları.</li>
-                <li>Üst düzey güvenlik ve ödeme seçenekleri.</li>
-                <li>İzleme ve analiz araçları ile performans takibi.</li>
+                <li>Özelleştirilmiş içerik yönetimi.</li>
+                <li>İleri düzey güvenlik ve ödeme seçenekleri.</li>
             </ul>
             <a href="https://www.paytr.com/odeme" target="_blank" class="cta-button">Satın Al</a>
         </div>
         <div class="category">
             <h3>Kişisel Blog</h3>
-            <p><strong>Satış Stratejileri:</strong></p>
+            <p><strong>Stratejiler:</strong></p>
             <ul>
-                <li>Hikayenizi özgün ve ilgi çekici bir şekilde paylaşın.</li>
-                <li>Okuyucularınıza değer sağlayacak içerikler oluşturun.</li>
-                <li>SEO dostu yazılarla blogunuzu daha fazla kişiye ulaştırın.</li>
+                <li>Hikayenizi benzersiz bir şekilde anlatın.</li>
+                <li>Değerli içerikler üretin.</li>
+                <li>SEO ile sitenizi tanıtın.</li>
             </ul>
-            <p><strong>Avantajlar:</strong></p> 
+            <p><strong>Avantajlar:</strong></p>
             <ul>
-                <li>Kişisel ihtiyaçlarınıza göre özel blog sayfası tasarımı.</li>
-                <li>Kolay kullanımlı yazılım ve araçlar.</li>
-                <li>Sosyal medya entegrasyonu ile geniş kitlelere ulaşın.</li>
+                <li>Kişisel tema ve blog düzeni.</li>
+                <li>Kolay yönetim araçları.</li>
             </ul>
             <a href="https://www.paytr.com/odeme" target="_blank" class="cta-button">Satın Al</a>
         </div>
@@ -252,7 +275,7 @@
     <!-- Footer Section -->
     <footer>
         <div class="social-media">
-            <!-- Sosyal medya linkleri buraya eklenebilir -->
+            <!-- Sosyal medya linkleri -->
         </div>
         <div class="footer-links">
             <a href="#">Hakkında</a> | 
@@ -262,26 +285,18 @@
     </footer>
 
     <script>
-        // Yağmur damlalarını yaratmak için JavaScript
         function createRain() {
             const rainContainer = document.getElementById('rain');
-            const numberOfRaindrops = 50; // Yağmur damlası sayısı
-
+            const numberOfRaindrops = 20;
             for (let i = 0; i < numberOfRaindrops; i++) {
                 const raindrop = document.createElement('div');
                 raindrop.classList.add('raindrop');
-                
-                // Damlaların yatay konumlarını rastgele ayarlama
                 raindrop.style.left = `${Math.random() * 100}vw`;
-                
-                // Rastgele bir hız ve gecikme ekleyerek damlaların farklı zamanlarda düşmesini sağlarız
-                raindrop.style.animationDuration = `${Math.random() * 2 + 2}s`; // 2 ile 4 saniye arasında rastgele bir süre
-                raindrop.style.animationDelay = `${Math.random() * 1}s`; // Gecikme ekleyerek farklı zamanlarda düşmelerini sağlarız
+                raindrop.style.animationDuration = `${Math.random() * 2 + 2}s`;
+                raindrop.style.animationDelay = `${Math.random() * 1}s`;
                 rainContainer.appendChild(raindrop);
             }
         }
-
-        // Yağmur damlalarını başlatma
         createRain();
     </script>
 </body>
