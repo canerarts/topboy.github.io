@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tercihler</title>
+    <style>
+        /* Genel Stil */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('img/wal2.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #FFD700;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.75);
+            z-index: -1;
+        }
+
+        .header {
+            background-color: #000;
+            color: #FFD700;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        /* Kartlar */
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            padding: 40px;
+            flex-wrap: wrap;
+            gap: 20px; /* Kartlar arasına boşluk */
+        }
+
+        .card {
+            background-image: url('img/kart.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 250px;
+            margin: 10px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease; /* Büyüme efekti için geçiş */
+        }
+
+        .card:hover {
+            transform: scale(1.1); /* Kartın üzerine gelindiğinde büyüme efekti */
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .card h3, .card p, .card button {
+            z-index: 2;
+            position: relative;
+        }
+
+        .card h3 {
+            font-size: 1.8em;
+            margin: 10px 0;
+        }
+
+        .card p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .card button {
+            background-color: #FFD700;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .card button:hover {
+            background-color: #f0a500;
+        }
+
+        .profile-img {
+            width: 75px;
+            height: 75px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        /* Yeni Container */
+        .new-container {
+            background: url('img/kart2.jpg') no-repeat center center;
+            background-size: cover;
+            width: 250px;
+            height: 400px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease; /* Büyüme efekti için geçiş */
+        }
+
+        .new-container:hover {
+            transform: scale(1.1); /* Yeni container üzerine gelindiğinde büyüme efekti */
+        }
+
+        .new-container img {
+            width: 75px;
+            height: 75px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #FFD700;
+            margin-bottom: 15px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .new-container h3, .new-container button {
+            z-index: 2;
+            position: relative;
+        }
+
+        .new-container h3 {
+            font-size: 1.8em;
+            margin: 10px 0;
+            color: #FFD700;
+        }
+
+        .new-container button {
+            background-color: #FFD700;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .new-container button:hover {
+            background-color: #f0a500;
+        }
+
+        .back-button {
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            background-color: #FFD700;
+            color: #000;
+            text-align: center;
+            padding: 15px;
+            font-size: 1.2em;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .back-button:hover {
+            background-color: #f0a500;
+        }
+
+        /* Footer */
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #000;
+            color: #FFD700;
+            text-align: center;
+            padding: 15px;
+        }
+
+        footer iframe {
+            max-width: 80%; /* Boyutunu köşelerden uzaklaştır */
+            margin: 0 auto; /* Ortalamak için */
+            display: block; /* Ortalamayı sağlamak için */
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <h1>Tercihlerinizi Yapın</h1>
+    </header>
+
+    <!-- Kartlar -->
+    <div class="cards-container">
+        <div class="card">
+            <img src="img/kart2.jpg" alt="Profil Fotoğrafı" class="profile-img">
+            <h3>Founder</h3>
+            <p>Kurucuların Sosyal Medya Hesapları</p>
+
+            <div class="button-container">
+                <a href="https://www.instagram.com/ccanerakdag/" target="_blank" style="text-decoration: none;">
+                    <button>Just C</button>
+                </a>
+                <a href="https://www.instagram.com/vcanyldrm/" target="_blank" style="text-decoration: none;">
+                    <button>Just V</button>
+                </a>
+            </div>
+        </div>
+
+        <!-- Yeni Container -->
+        <div class="new-container">
+            <img src="img/spotify.png" alt="Profil Fotoğrafı">
+            <h3>TOP BOY</h3>
+            <p>1000+ Kaydedilmiş Listemiz</p>
+            <button onclick="document.getElementById('spotifyIframe').style.display='block'; document.getElementById('spotifyIframe').contentWindow.postMessage('play', '*');">Spotify'ı Başlat</button>
+        </div>
+    </div>
+
+    <!-- Geri Dön Butonu -->
+    <a href="index.html" class="back-button">Ana Sayfaya Dön</a>
+
+    <!-- Footer ve Spotify iframe'ini sayfanın altında otomatik gösterme -->
+    <footer id="footer">
+        <iframe id="spotifyIframe" src="https://open.spotify.com/embed/playlist/3oooVJRLIVMOEHXlHaoS9v?utm_source=generator"
+                width="100%" height="80" frameBorder="0" allow="encrypted-media" style="display:none;"></iframe>
+    </footer>
+
+    <script>
+        // Başlatma butonuna tıklandığında, iframe'i göster ve müziği başlat
+        document.getElementById('spotifyIframe').onload = function() {
+            document.getElementById('spotifyIframe').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim - Lewis Culture</title>
+    <style>
+        /* Genel Stil */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('img/iletisim.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #FFD700; /* Sarı renk */
+            position: relative;
+            min-height: 100vh; /* Sayfa yüksekliği kadar */
+            overflow: hidden; /* Sayfa dışına taşma engellendi */
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4); /* Siyah, %40 opaklık */
+            z-index: -1; /* Arka planda tutmak için */
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 150px;
+            background-color: #000; /* Siyah arka plan */
+        }
+
+        header .logo img {
+            max-height: 150px;
+            width: auto;
+        }
+
+        /* İletişim Formu */
+        .contact-form {
+            width: 50%;
+            margin: 50px auto;
+            background-color: rgba(0, 0, 0, 0.7); /* Saydam siyah arka plan */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .contact-form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Input ve Textarea'nın animasyonu için */
+        .contact-form input, .contact-form textarea {
+            width: 90%;  /* Genişliği %90'a düşürdük */
+            padding: 10px;
+            margin: 15px auto; /* Kutuların arasına daha fazla boşluk ekledik */
+            border: 1px solid #FFD700;
+            border-radius: 5px;
+            background-color: #333; /* Koyu gri arka plan */
+            color: #FFD700;
+            font-size: 1em;
+            outline: none; /* Odaklanınca kenarlık yok */
+            position: relative;
+        }
+
+        .contact-form input:focus, .contact-form textarea:focus {
+            animation: glow 1s infinite alternate; /* Animasyonu odaklanınca başlat */
+        }
+
+        /* Hareketli ışık animasyonu */
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 5px #FFD700, 0 0 15px #FFD700, 0 0 30px #FFD700;
+            }
+            100% {
+                box-shadow: 0 0 15px #FFD700, 0 0 30px #FFD700, 0 0 50px #FFD700;
+            }
+        }
+
+        .contact-form button {
+            background-color: #FFD700;
+            color: #000;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background-color: #f0a500;
+        }
+
+        /* Ana Sayfaya Dön Butonu */
+        .go-home {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .home-button {
+            background-color: #FFD700;
+            color: #000;
+            padding: 10px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .home-button:hover {
+            background-color: #f0a500;
+        }
+
+        /* Footer */
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #000; /* Siyah arka plan */
+            color: #FFD700; /* Sarı yazı rengi */
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        footer .footer-links a {
+            color: #FFD700;
+            text-decoration: none;
+            font-size: 1.2em;
+            margin: 0 10px;
+        }
+
+        footer .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <img src="img/TOPBOY.png" alt="Lewis Culture Logo">
+        </div>
+    </header>
+
+    <!-- Contact Form Section -->
+    <section class="contact-form">
+        <h2>İletişim Formu</h2>
+        <form action="https://formspree.io/f/xrbboyqw" method="POST">
+            <!-- Formspree endpoint URL'sini buraya ekledik -->
+            <input type="text" name="name" placeholder="Adınız" required>
+            <input type="email" name="email" placeholder="E-posta adresiniz" required>
+            <textarea name="message" placeholder="Mesajınız" rows="6" required></textarea>
+            <button type="submit">Gönder</button>
+        </form>
+    </section>
+
+    <!-- Ana Sayfaya Dön Butonu -->
+    <section class="go-home">
+        <a href="index.html">
+            <button class="home-button">Ana Sayfaya Dön</button>
+        </a>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-links">
+            <a href="#">Hakkında</a> | 
+            <a href="iletisim.html" target="_blank">İletişim</a> | 
+            <a href="#">Gizlilik Politikası</a>
+        </div>
+    </footer>
+
+</body>
+</html>
