@@ -45,15 +45,17 @@
             justify-content: center;
             padding: 40px;
             flex-wrap: wrap;
-            gap: 20px; /* Kartlar arasına boşluk */
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto; /* Ortalamak için */
         }
 
-        .card {
+        .card, .new-container {
             background-image: url('img/kart.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            width: 250px;
+            width: 300px;
             margin: 10px;
             padding: 20px;
             border-radius: 10px;
@@ -61,14 +63,14 @@
             text-align: center;
             position: relative;
             overflow: hidden;
-            transition: transform 0.3s ease; /* Büyüme efekti için geçiş */
+            transition: transform 0.3s ease;
         }
 
-        .card:hover {
-            transform: scale(1.1); /* Kartın üzerine gelindiğinde büyüme efekti */
+        .card:hover, .new-container:hover {
+            transform: scale(1.1);
         }
 
-        .card::after {
+        .card::after, .new-container::after {
             content: '';
             position: absolute;
             top: 0;
@@ -79,12 +81,13 @@
             z-index: 1;
         }
 
-        .card h3, .card p, .card button {
+        .card h3, .card p, .card button,
+        .new-container h3, .new-container button {
             z-index: 2;
             position: relative;
         }
 
-        .card h3 {
+        .card h3, .new-container h3 {
             font-size: 1.8em;
             margin: 10px 0;
         }
@@ -94,7 +97,7 @@
             margin-bottom: 20px;
         }
 
-        .card button {
+        .card button, .new-container button {
             background-color: #FFD700;
             color: #000;
             border: none;
@@ -103,7 +106,7 @@
             cursor: pointer;
         }
 
-        .card button:hover {
+        .card button:hover, .new-container button:hover {
             background-color: #f0a500;
         }
 
@@ -119,9 +122,7 @@
         .new-container {
             background: url('img/kart2.jpg') no-repeat center center;
             background-size: cover;
-            width: 250px;
             height: 400px;
-            border-radius: 10px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -129,11 +130,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             position: relative;
             overflow: hidden;
-            transition: transform 0.3s ease; /* Büyüme efekti için geçiş */
-        }
-
-        .new-container:hover {
-            transform: scale(1.1); /* Yeni container üzerine gelindiğinde büyüme efekti */
+            transition: transform 0.3s ease;
         }
 
         .new-container img {
@@ -147,30 +144,7 @@
             position: relative;
         }
 
-        .new-container h3, .new-container button {
-            z-index: 2;
-            position: relative;
-        }
-
-        .new-container h3 {
-            font-size: 1.8em;
-            margin: 10px 0;
-            color: #FFD700;
-        }
-
-        .new-container button {
-            background-color: #FFD700;
-            color: #000;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .new-container button:hover {
-            background-color: #f0a500;
-        }
-
+        /* Geri Dön Butonu */
         .back-button {
             display: block;
             width: 200px;
@@ -201,9 +175,21 @@
         }
 
         footer iframe {
-            max-width: 80%; /* Boyutunu köşelerden uzaklaştır */
-            margin: 0 auto; /* Ortalamak için */
-            display: block; /* Ortalamayı sağlamak için */
+            max-width: 80%;
+            margin: 0 auto;
+            display: block;
+        }
+
+        /* Mobil Uyumluluk */
+        @media (max-width: 768px) {
+            .card, .new-container {
+                width: 100%; /* Kartlar tamamen genişlikte olacak */
+                margin: 10px 0;
+            }
+
+            .cards-container {
+                padding: 20px;
+            }
         }
 
     </style>
@@ -250,7 +236,6 @@
     </footer>
 
     <script>
-        // Başlatma butonuna tıklandığında, iframe'i göster ve müziği başlat
         document.getElementById('spotifyIframe').onload = function() {
             document.getElementById('spotifyIframe').style.display = 'block';
         }
