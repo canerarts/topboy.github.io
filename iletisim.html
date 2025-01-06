@@ -14,8 +14,8 @@
             background-size: cover;
             color: #FFD700; /* Sarı renk */
             position: relative;
-            min-height: 100vh; /* Sayfa yüksekliği kadar */
-            overflow: hidden; /* Sayfa dışına taşma engellendi */
+            min-height: 120vh; /* Sayfa yüksekliğini artırdık */
+            overflow-y: auto; /* Kaydırma çubuğunun görünmesini sağlıyoruz */
         }
 
         body::before {
@@ -143,6 +143,49 @@
             text-decoration: underline;
         }
 
+        /* Mobil Uyumluluk için Medya Sorguları */
+        @media (max-width: 768px) {
+            .contact-form {
+                width: 80%; /* Daha küçük ekranlarda form genişliğini artırıyoruz */
+            }
+
+            header {
+                height: 120px; /* Daha küçük ekranlarda header yüksekliğini küçültüyoruz */
+            }
+
+            header .logo img {
+                max-height: 120px; /* Logo boyutunu ayarlıyoruz */
+            }
+
+            .home-button {
+                padding: 10px 20px; /* Mobilde buton boyutunu küçültüyoruz */
+                font-size: 1em;
+            }
+
+            footer .footer-links a {
+                font-size: 1em; /* Link boyutlarını küçültüyoruz */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-form {
+                width: 90%; /* Formun genişliğini mobilde biraz daha daraltıyoruz */
+                padding: 10px;
+            }
+
+            .contact-form input, .contact-form textarea {
+                font-size: 0.9em; /* Input ve textarea fontlarını küçültüyoruz */
+            }
+
+            .contact-form button {
+                font-size: 1em; /* Buton fontunu küçültüyoruz */
+            }
+
+            .home-button {
+                font-size: 1em; /* Ana sayfa butonunu küçültüyoruz */
+                padding: 8px 20px; /* Butonun boyutunu ayarlıyoruz */
+            }
+        }
     </style>
 </head>
 <body>
